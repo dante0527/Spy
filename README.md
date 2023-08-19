@@ -26,3 +26,4 @@ You can play the game by your own rules, such as...
 - Using a timer to limit the length of the interrogation
 - Waiting until everyone is done asking questions to take a vote on who the spy is
 - Add your own custom topics by editing 'topics.csv'
+- Questions can be Yes/No or open-ended
