@@ -73,6 +73,7 @@ def spy_game():
 
         current_player += 1
 
+
 if __name__ == "__main__":
 
     while True:
