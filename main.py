@@ -44,7 +44,7 @@ def spy_game():
         with open("topics.csv", 'r') as fin:
             topics = [line.strip().title() for line in fin]
     except FileNotFoundError:
-        print("File not found.")
+        input("File not found.\nPress Enter to quit...")
 
     secret_topic = choice(topics)
 
