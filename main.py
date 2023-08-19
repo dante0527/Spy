@@ -27,47 +27,57 @@ def validate_n_players(num):
             num = input("Enter number of players: ")
             pass
 
-clear()
 
-n_players = validate_n_players(input("Enter number of players: "))
+def spy_game():
 
-print(f"There are {n_players} players\n")
+    clear()
 
-spy = randint(1, n_players)
+    n_players = validate_n_players(input("Enter number of players: "))
 
-#print(f"The spy is player {spy}")
+    print(f"There are {n_players} players\n")
 
-try:
-    with open("topics.csv", 'r') as fin:
-        topics = [line.strip().title() for line in fin]
-except FileNotFoundError:
-    print("File not found.")
+    spy = randint(1, n_players)
 
-secret_topic = choice(topics)
+    #print(f"The spy is player {spy}")
 
-#print(f"The topic is {secret_topic}")
+    try:
+        with open("topics.csv", 'r') as fin:
+            topics = [line.strip().title() for line in fin]
+    except FileNotFoundError:
+        print("File not found.")
 
-input("Give device to first player\nPress Enter to start...")
-clear()
+    secret_topic = choice(topics)
 
-current_player = 1
+    #print(f"The topic is {secret_topic}")
 
-for _ in range(n_players):
+    input("Give device to first player\nPress Enter to start...")
+    clear()
 
-    if current_player == spy:
-        print("You are the Spy\n")
-        input("Press Enter to hide...")
-        clear()
+    current_player = 1
 
-    else:
-        print(f"The topic is '{secret_topic}'\n")
-        input("Press Enter when done...")
-        clear()
+    for _ in range(n_players):
 
-    if current_player < n_players:
-        input("Give the device to the next player\n\nPress Enter to reveal topic...")
-        clear()
+        if current_player == spy:
+            print("You are the Spy\n")
+            input("Press Enter to hide...")
+            clear()
 
-    current_player += 1
+        else:
+            print(f"The topic is '{secret_topic}'\n")
+            input("Press Enter when done...")
+            clear()
 
-input("Press Enter to quit...")
+        if current_player < n_players:
+            input("Give the device to the next player\n\nPress Enter to reveal topic...")
+            clear()
+
+        current_player += 1
+
+if __name__ == "__main__":
+
+    while True:
+        spy_game()
+        
+        if input("Type 1 to play again\nPress Enter to quit") != '1':
+            break
+        
