@@ -28,57 +28,56 @@ def validate_n_players(num):
             pass
 
 
-def spy_game():
+def run():
 
-    clear()
+    while True:
+        clear()
 
-    n_players = validate_n_players(input("Enter number of players: "))
+        n_players = validate_n_players(input("Enter number of players: "))
 
-    print(f"There are {n_players} players\n")
+        print(f"There are {n_players} players\n")
 
-    spy = randint(1, n_players)
+        spy = randint(1, n_players)
 
-    #print(f"The spy is player {spy}")
+        #print(f"The spy is player {spy}")
 
-    try:
-        with open("topics.csv", 'r') as fin:
-            topics = [line.strip().title() for line in fin]
-    except FileNotFoundError:
-        input("File not found.\nPress Enter to quit...")
+        try:
+            with open("topics.csv", 'r') as fin:
+                topics = [line.strip().title() for line in fin]
+        except FileNotFoundError:
+            input("File not found.\nPress Enter to quit...")
 
-    secret_topic = choice(topics)
+        secret_topic = choice(topics)
 
-    #print(f"The topic is {secret_topic}")
+        #print(f"The topic is {secret_topic}")
 
-    input("Give device to first player\nPress Enter to start...")
-    clear()
+        input("Give device to first player\nPress Enter to reveal topic...")
+        clear()
 
-    current_player = 1
+        current_player = 1
 
-    for _ in range(n_players):
+        for _ in range(n_players):
 
-        if current_player == spy:
-            print("You are the Spy\n")
-            input("Press Enter to hide...")
-            clear()
+            if current_player == spy:
+                print("You are the Spy\n")
+                input("Press Enter to hide...")
+                clear()
 
-        else:
-            print(f"The topic is '{secret_topic}'\n")
-            input("Press Enter when done...")
-            clear()
+            else:
+                print(f"The topic is '{secret_topic}'\n")
+                input("Press Enter when done...")
+                clear()
 
-        if current_player < n_players:
-            input("Give the device to the next player\n\nPress Enter to reveal topic...")
-            clear()
+            if current_player < n_players:
+                input("Give the device to the next player\n\nPress Enter to reveal topic...")
+                clear()
 
-        current_player += 1
+            current_player += 1
+
+        if input("Type 1 to play again\nPress Enter to quit\n") != '1':
+            break
 
 
 if __name__ == "__main__":
-
-    while True:
-        spy_game()
-        
-        if input("Type 1 to play again\nPress Enter to quit") != '1':
-            break
+    run()
         
